@@ -13,8 +13,12 @@ public class StringCalculator {
     }
 
     private String[] getSplit(String text) {
-        String[] numbers = text.split(",");
-        return numbers;
+        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
+        if (m.find()) {
+            String customDelimeter = m.group(1);
+            return m.group(2).split(customDelimeter);
+        }
+        return text.split(",|:");
     }
 
     private boolean isaBlank(String text) {
@@ -24,9 +28,17 @@ public class StringCalculator {
     private int[] toInts(String[] values) {
         int[] numbers = new int[values.length];
         for (int i = 0; i < values.length; i++) {
-            numbers[i] = Integer.parseInt(values[i]);
+            numbers[i] = toPositive(values[i]);
         }
         return numbers;
+    }
+
+    private int toPositive(String value) {
+        int number = Integer.parseInt(value);
+        if (number < 0) {
+            throw new RuntimeException();
+        }
+        return number;
     }
 
     private int sum(int[] numbers) {

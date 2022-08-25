@@ -40,7 +40,7 @@ class StringCalculatorTest {
 
     @Test
     public void 쉼표_구분자_테스트2() {
-        assertEquals(3, stringCalculator.add("1,2:3"));
+        assertEquals(6, stringCalculator.add("1,2:3"));
     }
 
     @Test
@@ -50,6 +50,6 @@ class StringCalculatorTest {
 
     @Test()
     public void 음수테스트() {
-        assertThrows(RuntimeException.class, () -> stringCalculator.add(""));
+        assertThrows(RuntimeException.class, () -> stringCalculator.add("-1"));
     }
 }
