@@ -6,32 +6,35 @@ import java.util.regex.Pattern;
 public class StringCalculator {
     public int add(String text) {
 
-        if (text == null || text.isEmpty()) {
+        if (isaBlank(text)) {
             return 0;
         }
+        return sum(toInts(getSplit(text)));
+    }
 
+    private String[] getSplit(String text) {
         String[] numbers = text.split(",");
+        return numbers;
+    }
+
+    private boolean isaBlank(String text) {
+        return text == null || text.isEmpty();
+    }
+
+    private int[] toInts(String[] values) {
+        int[] numbers = new int[values.length];
+        for (int i = 0; i < values.length; i++) {
+            numbers[i] = Integer.parseInt(values[i]);
+        }
+        return numbers;
+    }
+
+    private int sum(int[] numbers) {
         int sum = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            sum += Integer.parseInt(numbers[i]);
+        for (int number : numbers) {
+            sum += number;
         }
         return sum;
-
-        //else if (text.contains(",") && text.contains(":")) {
-//            String[] numbers = text.split(",|:");
-//            int sum = 0;
-//            for (int i = 0; i < numbers.length; i++) {
-//                if(){
-//
-//                }
-//                sum += Integer.parseInt(numbers[i]);
-//            }
-//        }
-
-//        Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
-//        if (m.find()) {
-//            String customDelimeter = m.group();
-//            String[] tokens = m.group(2).split(customDelimeter);
-//        }1111
     }
 }
+
