@@ -1,4 +1,4 @@
-package calculatortest;
+package com.ch3.calculatortest;
 
 import com.ch3.StringCalculator;
 import org.junit.jupiter.api.Assertions;
@@ -34,8 +34,13 @@ class StringCalculatorTest {
     }
 
     @Test
-    public void 쉼표구분자테스트() {
-        assertEquals(6, stringCalculator.add("1,2:3"));
+    public void 쉼표_구분자_테스트() {
+        assertEquals(3, stringCalculator.add("1,2"));
+    }
+
+    @Test
+    public void 쉼표_구분자_테스트2() {
+        assertEquals(3, stringCalculator.add("1,2:3"));
     }
 
     @Test

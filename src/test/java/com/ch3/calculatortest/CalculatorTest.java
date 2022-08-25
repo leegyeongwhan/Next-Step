@@ -1,4 +1,4 @@
-package calculatortest;
+package com.ch3.calculatortest;
 
 import com.ch3.Calculator;
 import org.junit.jupiter.api.AfterEach;
